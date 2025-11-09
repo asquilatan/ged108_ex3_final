@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GED108 Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,90;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            background-color: #000; /* Set a neutral background since image is now in parallax element */
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+        }
+
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Use viewport width */
+            height: 100vh; /* Use viewport height */
+            z-index: -1;
+            background: url('images/test.png') no-repeat center top;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .navbar {
+            position: fixed;
+            top: -80px; /* Start off-screen */
+            left: 50%;
+            transform: translateX(-50%); /* Center the navbar */
+            width: 75%;
+            height: 60px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(10px);
+            border-image: linear-gradient(to right, white, #f5f5f5) 1;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow:
+                inset 0 0 15px rgba(255, 255, 255, 0.2),
+                0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: top 0.3s ease;
+        }
+
+        .navbar.show {
+            top: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 35px;
+            margin: 0 auto;
+        }
+
+        .nav-button {
+            padding: 8px 16px;
+            border-radius: 22px;
+            color: white;
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button:active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .module-content {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            color: white;
+            overflow: visible;
+        }
+        
+        .module-header h1 {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        
+        .module-header h2 {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 2em;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-header {
+            flex: 0 200px; /* Fixed width for the header */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            white-space: nowrap;
+            color: white;
+            margin: 0;
+            transform: rotate(180deg); /* To have text go from bottom to top */
+        }
+        
+        .docx-body {
+            flex: 1;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2em;
+            border-radius: 10px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .carousel-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        .docx-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        
+        .docx-body h4 {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-size: 1.3em;
+            margin: 1.5em 0 0.5em 0;
+            color: #ccc;
+        }
+        
+        .docx-body p {
+            margin-bottom: 1em;
+            line-height: 1.6;
+        }
+        
+        .doc-content {
+            font-family: Arial, sans-serif;
+            font-size: 0.5em;
+        }
+        
+        .module-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 2em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            margin: 10rem 0 30rem 0;
+            padding: 20px 0;
+        }
+        
+        #pre-module {
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .galerie-header-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 100px 20px 20px 100px; /* top right bottom left */
+        }
+        
+        .galerie-header {
+            text-align: left;
+            width: 100%;
+        }
+        
+        .galerie-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 4.5em;
+            margin-bottom: 0.1em;
+        }
+        
+        .galerie-header p {
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 2em auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            width: 600%; /* 6 images = 6 * 100% */
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-image {
+            width: calc(100% / 6); /* Each image takes 1/6 of the container */
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            font-size: 2em;
+            padding: 10px 35px;
+            cursor: pointer;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: white;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .modal-content img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #bbb;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+        
+        .modal-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 2em;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-bg"></div>
+    <div class="navbar" id="navbar">
+        <div class="nav-buttons">
+            <a href="#module1" class="nav-button active">Module 1</a>
+            <a href="#module2" class="nav-button">Module 2</a>
+            <a href="#module3" class="nav-button">Module 3</a>
+            <a href="#reflection" class="nav-button">Reflection</a>
+        </div>
+    </div>
+
+    <section id="pre-module" class="module-section">
+        <div class="galerie-header-container">
+            <div class="galerie-header">
+                <h1>La Galerie</h1>
+                <p>A GED108 Student Portfolio by Allen S. Quilatan</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="module1" class="module-section">
+        <div class="module-content">
+            <div class="module-header">
+                <h1>Module 1</h1>
+                <h2>In this module, we explore the importance of arts and humanities in education, society, and the economy.</h2>
+            </div>
+            <div class="docx-body">
+                <h3>State of the Arts: An Insight Paper on Why the Arts Should Matter</h3>
+                <div class="doc-content">
+                    <h4>Introduction</h4>
+                    <p>In the article Why the arts should matter by Dalisay (2018), the author discusses the different ideas on why arts and humanities play an important role in education, society, and the economy. He emphasizes their impact on shaping individuals, building cultural identity, and contributing to national development. In light of this, this insight paper will share my learnings regarding the importance of the arts and humanities. Specifically, I will reflect on three main ideas from the article, along with counterpoints: that arts and humanities are needed for a well-rounded individual, that they are essential for a society to govern itself wisely, and that they also have economic value.</p>
+                    
+                    <h4>Arts and Humanities for Individuals</h4>
+                    <p>Before reading this article, I used to think that arts and humanities aren't needed for a well-rounded individual, since I believed technical knowledge and practical skills were enough to succeed in life. After reading the article, I now think that they are very important, as they nurture critical thinking, broaden perspectives, and enrich parts of human experience that logic alone cannot reach. Dalisay (2018) mentions that we should adopt a rationalist outlook by grounding our artistic judgments in social, political, and economic realities, since the arts expand our vision and reach the areas of human understanding that reason and logic cannot. For instance, as a computer science student, attending a workshop on classic literature would not only strengthen my analytical skills but also help me form a more nuanced worldview and better understand perspectives different from my own.</p>
+                    
+                    <p>However, while Dalisay (2018) is right to point out that balance is important, I also argue that a well-rounded individual can be cultivated through other means too. For instance, practical skills, like those learned in vocational or technical training, can be highly valuable for both personal growth and professional success, as they directly address real-world demands. To add to this, focusing on STEM fields can also lead to a comprehensive understanding of the world by solving tangible problems through science and technology. A good example of this would be a biomedical engineer, who applies engineering principles and biological sciences to design, develop, and maintain medical equipment that improves patient care (Chhetri, 2024).</p>
+                    
+                    <h4>Arts and Humanities for Society</h4>
+                    <p>Moreover, I used to think that a society mainly needs politicians to govern itself wisely. After reading the article, I now think that the arts and humanities are important for a society to govern itself wisely, as they help citizens think critically and imaginatively about issues that matter. Dalisay (2018) mentions that the arts are crucial for national unity and cultural education, since they allow the expression of ideas and values that reason and logic alone cannot reach. For instance, as someone from Cavite, I can personally see how historical paintings, like depictions of the Battle of Imus, create a strong sense of identity and belonging. Another example would be the legends of Emilio Aguinaldo, which continue to inspire many Caviteno's like myself to reflect on sacrifice and leadership.</p>
+                    
+                    <p>Despite this, I would argue that an overemphasis on the arts could instead turn them into propaganda rather than tools for genuine critical thought. For instance, many works from the Mansudae Art Studio in North Korea depict only their leader and glorify the regime, showing how art can be reduced to state propaganda (Brown, 2025). This shows the risk of using the arts as instruments of control, where they reinforce power rather than promote free thinking and unity.</p>
+                    
+                    <h4>Arts and Economic Growth</h4>
+                    <p>Finally, I used to think that the arts only made up a very small portion of the country's economic and material well-being. After reading the article, I now think that they actually make up a significant portion, with copyright-based industries in the Philippines contributing over P661.23 billion to the economy in 2010 and accounting for a rising share of the country's GDP and employment (Dalisay, 2018). An example of this is the music industry, as it generates revenue through ticket sales, merchandising, streaming, and live performances. Specifically, the girl group BINI has become a good example of this, as their concerts and brand partnerships have helped push Original Pilipino Music (OPM) into mainstream recognition while also creating economic activity in the entertainment sector (Cruz & Anoc, 2024).</p>
+                    
+                    <p>However, I would argue that the economic benefits of the arts are often concentrated in specific sectors and may not benefit the broader population. In the music industry, for instance, over 50% of Filipino music workers earn less than the minimum wage (Egalin, 2024). To add to this, most of them are freelancers with non-music related income sources to supplement their livelihood, showing that while the arts can contribute heavily to the economy on paper, the gains are not evenly shared across those working in the industry.</p>
+                    
+                    <h4>Conclusion</h4>
+                    <p>Dalisay's (2018) Why the arts should matter emphasizes three major arguments for the importance of the arts and humanities, and this insight paper tackles each of them. First, the arts and humanities are needed for a well-rounded individual because they broaden perspectives and enrich areas of thought beyond logic and reason. Furthermore, they are necessary for a society to govern itself wisely, since they promote cultural unity, critical reflection, and imaginative thinking about national identity. Finally, they are good for a country's economic and material well-being, as shown by their significant contributions to GDP and industries such as music and entertainment. However, these arguments are not absolute. The arts may not be the only way to cultivate balance in individuals, unity in society, or growth in the economy. What they do provide, however, is a unique and irreplaceable dimension to human progress, one that science, politics, or economics alone cannot fulfill.</p>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <img src="images/Module1_Q1/1.png" alt="Module 1 Question 1 Image 1" class="carousel-image" onclick="openModal('Module1_Q1/1.png')">
+                        <img src="images/Module1_Q1/2.png" alt="Module 1 Question 1 Image 2" class="carousel-image" onclick="openModal('Module1_Q1/2.png')">
+                        <img src="images/Module1_Q1/3.png" alt="Module 1 Question 1 Image 3" class="carousel-image" onclick="openModal('Module1_Q1/3.png')">
+                        <img src="images/Module1_Q1/4.png" alt="Module 1 Question 1 Image 4" class="carousel-image" onclick="openModal('Module1_Q1/4.png')">
+                        <img src="images/Module1_Q1/5.png" alt="Module 1 Question 1 Image 5" class="carousel-image" onclick="openModal('Module1_Q1/5.png')">
+                        <img src="images/Module1_Q1/6.png" alt="Module 1 Question 1 Image 6" class="carousel-image" onclick="openModal('Module1_Q1/6.png')">
+                    </div>
+                </div>
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                    <span class="indicator" onclick="currentSlide(5)"></span>
+                    <span class="indicator" onclick="currentSlide(6)"></span>
+                </div>
+            </div>
+            
+            <!-- Module 1 Exercise 1 Image -->
+            <div class="module1-ex1-image">
+                <img src="images/Module1_Ex1/1.png" alt="Module 1 Exercise 1 Image" style="width: 100%; margin: 2em auto; display: block; border-radius: 10px; object-fit: contain;">
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <section id="module2" class="module-section">
+    </section>
+
+    <section id="module3" class="module-section">
+    </section>
+
+    <section id="reflection" class="module-section">
+    </section>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Modal Image">
+        </div>
+        <div class="modal-nav">
+            <button class="modal-btn prev" onclick="changeModalImage(-1)">&#10094;</button>
+            <button class="modal-btn next" onclick="changeModalImage(1)">&#10095;</button>
+        </div>
+    </div>
+    
+    <script>
+        // Get all navigation buttons and sections
+        const navButtons = document.querySelectorAll('.nav-button');
+        const sections = document.querySelectorAll('.module-section');
+        const navbar = document.getElementById('navbar');
+        
+        // Initialize parallax background position on load
+        window.addEventListener('load', function() {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            parallaxBg.style.backgroundPosition = 'center top';
+        });
+        
+        // Handle navbar fade-in after scrolling past pre-module section
+        window.addEventListener('scroll', function() {
+            // Parallax effect for background (this needs to move in the opposite direction)
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const speed = 0.3; // Adjust this value to change parallax speed (lower = more effect)
+            parallaxBg.style.backgroundPosition = `center ${-scrolled * speed}px`;
+            
+            // Get the position of module1 section
+            const module1Section = document.getElementById('module1');
+            const module1Position = module1Section.offsetTop;
+            
+            // Show navbar after scrolling past the pre-module section (when module1 reaches top of viewport)
+            if (window.scrollY >= module1Position) {
+                navbar.classList.add('show');
+            } else {
+                navbar.classList.remove('show');
+            }
+        });
+        
+        // Create an Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all buttons
+                    navButtons.forEach(button => {
+                        button.classList.remove('active');
+                    });
+                    
+                    // Add active class to the button corresponding to the visible section
+                    const activeButton = document.querySelector(`a[href="#${entry.target.id}"]`);
+                    if (activeButton) {
+                        activeButton.classList.add('active');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the section is visible
+        });
+        
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add smooth scrolling for navigation links
+        navButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = button.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <script>
+        // Existing script code continues here...
+        
+        // Carousel functionality
+        let currentSlideIndex = 0;
+        const totalSlides = 6;
+        const carouselTrack = document.querySelector('.carousel-track');
+        
+        function moveCarousel(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            updateCarousel();
+        }
+        
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const translateXValue = -currentSlideIndex * (100 / totalSlides);
+            carouselTrack.style.transform = `translateX(${translateXValue}%)`;
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlideIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Modal functionality
+        let modalCurrentImageIndex = 0;
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        
+        function openModal(imageSrc) {
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            
+            // Find the index of the clicked image
+            const images = document.querySelectorAll('.carousel-image');
+            images.forEach((img, index) => {
+                if (img.src === imageSrc) {
+                    modalCurrentImageIndex = index;
+                }
+            });
+            
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        function changeModalImage(direction) {
+            modalCurrentImageIndex += direction;
+            
+            if (modalCurrentImageIndex >= totalSlides) {
+                modalCurrentImageIndex = 0;
+            } else if (modalCurrentImageIndex < 0) {
+                modalCurrentImageIndex = totalSlides - 1;
+            }
+            
+            const images = document.querySelectorAll('.carousel-image');
+            modalImg.src = images[modalCurrentImageIndex].src;
+        }
+        
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === 'block') {
+                if (event.key === 'Escape') {
+                    closeModal();
+                } else if (event.key === 'ArrowLeft') {
+                    changeModalImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeModalImage(1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
