@@ -250,6 +250,14 @@
             cursor: pointer;
         }
         
+        #module2-track {
+            width: 3300%; /* 33 images = 33 * 100% */
+        }
+        
+        #module2-carousel .carousel-image {
+            width: calc(100% / 33); /* Each image takes 1/33 of the container */
+        }
+        
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -368,6 +376,21 @@
         .modal-btn:hover {
             background: rgba(255, 255, 255, 0.4);
         }
+        
+        .embed-container {
+            width: 100vw; /* Half of the viewport width */
+            height: 70vh; /* Half of the viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2em auto; /* Center the container horizontally */
+        }
+        
+        .embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -394,7 +417,7 @@
         <div class="module-content">
             <div class="module-header">
                 <h1>Module 1</h1>
-                <h2>In this module, we explore the importance of arts and humanities in education, society, and the economy.</h2>
+                <h2>In this module, we explore the importance of arts and humanities in education, society, and the economy through an insight paper, a photo essay, and a visual analysis.</h2>
             </div>
             <div class="docx-body">
                 <h3>State of the Arts: An Insight Paper on Why the Arts Should Matter</h3>
@@ -455,6 +478,95 @@
     
 
     <section id="module2" class="module-section">
+        <div class="module-content">
+            <div class="module-header">
+                <h1>Module 2</h1>
+                <h2>In this module, we delve into various art forms and techniques, exploring their cultural significance and contemporary applications through visual presentations and analyses.</h2>
+            </div>
+            
+            <div class="content-container">
+                <div class="embed-container">
+                    <iframe src="https://drive.google.com/file/d/1NLRBjDGyOGb0PpAz6QkRn834MZQ3JO_S/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+            
+            <div class="carousel-container" id="module2-carousel">
+                <div class="carousel">
+                    <div class="carousel-track" id="module2-track">
+                        <img src="images/Module2_A2/1.png" alt="Module 2 Image 1" class="carousel-image" onclick="openModal('images/Module2_A2/1.png')">
+                        <img src="images/Module2_A2/2.png" alt="Module 2 Image 2" class="carousel-image" onclick="openModal('images/Module2_A2/2.png')">
+                        <img src="images/Module2_A2/3.png" alt="Module 2 Image 3" class="carousel-image" onclick="openModal('images/Module2_A2/3.png')">
+                        <img src="images/Module2_A2/4.png" alt="Module 2 Image 4" class="carousel-image" onclick="openModal('images/Module2_A2/4.png')">
+                        <img src="images/Module2_A2/5.png" alt="Module 2 Image 5" class="carousel-image" onclick="openModal('images/Module2_A2/5.png')">
+                        <img src="images/Module2_A2/6.png" alt="Module 2 Image 6" class="carousel-image" onclick="openModal('images/Module2_A2/6.png')">
+                        <img src="images/Module2_A2/7.png" alt="Module 2 Image 7" class="carousel-image" onclick="openModal('images/Module2_A2/7.png')">
+                        <img src="images/Module2_A2/8.png" alt="Module 2 Image 8" class="carousel-image" onclick="openModal('images/Module2_A2/8.png')">
+                        <img src="images/Module2_A2/9.png" alt="Module 2 Image 9" class="carousel-image" onclick="openModal('images/Module2_A2/9.png')">
+                        <img src="images/Module2_A2/10.png" alt="Module 2 Image 10" class="carousel-image" onclick="openModal('images/Module2_A2/10.png')">
+                        <img src="images/Module2_A2/11.png" alt="Module 2 Image 11" class="carousel-image" onclick="openModal('images/Module2_A2/11.png')">
+                        <img src="images/Module2_A2/12.png" alt="Module 2 Image 12" class="carousel-image" onclick="openModal('images/Module2_A2/12.png')">
+                        <img src="images/Module2_A2/13.png" alt="Module 2 Image 13" class="carousel-image" onclick="openModal('images/Module2_A2/13.png')">
+                        <img src="images/Module2_A2/14.png" alt="Module 2 Image 14" class="carousel-image" onclick="openModal('images/Module2_A2/14.png')">
+                        <img src="images/Module2_A2/15.png" alt="Module 2 Image 15" class="carousel-image" onclick="openModal('images/Module2_A2/15.png')">
+                        <img src="images/Module2_A2/16.png" alt="Module 2 Image 16" class="carousel-image" onclick="openModal('images/Module2_A2/16.png')">
+                        <img src="images/Module2_A2/17.png" alt="Module 2 Image 17" class="carousel-image" onclick="openModal('images/Module2_A2/17.png')">
+                        <img src="images/Module2_A2/18.png" alt="Module 2 Image 18" class="carousel-image" onclick="openModal('images/Module2_A2/18.png')">
+                        <img src="images/Module2_A2/19.png" alt="Module 2 Image 19" class="carousel-image" onclick="openModal('images/Module2_A2/19.png')">
+                        <img src="images/Module2_A2/20.png" alt="Module 2 Image 20" class="carousel-image" onclick="openModal('images/Module2_A2/20.png')">
+                        <img src="images/Module2_A2/21.png" alt="Module 2 Image 21" class="carousel-image" onclick="openModal('images/Module2_A2/21.png')">
+                        <img src="images/Module2_A2/22.png" alt="Module 2 Image 22" class="carousel-image" onclick="openModal('images/Module2_A2/22.png')">
+                        <img src="images/Module2_A2/23.png" alt="Module 2 Image 23" class="carousel-image" onclick="openModal('images/Module2_A2/23.png')">
+                        <img src="images/Module2_A2/24.png" alt="Module 2 Image 24" class="carousel-image" onclick="openModal('images/Module2_A2/24.png')">
+                        <img src="images/Module2_A2/25.png" alt="Module 2 Image 25" class="carousel-image" onclick="openModal('images/Module2_A2/25.png')">
+                        <img src="images/Module2_A2/26.png" alt="Module 2 Image 26" class="carousel-image" onclick="openModal('images/Module2_A2/26.png')">
+                        <img src="images/Module2_A2/27.png" alt="Module 2 Image 27" class="carousel-image" onclick="openModal('images/Module2_A2/27.png')">
+                        <img src="images/Module2_A2/28.png" alt="Module 2 Image 28" class="carousel-image" onclick="openModal('images/Module2_A2/28.png')">
+                        <img src="images/Module2_A2/29.png" alt="Module 2 Image 29" class="carousel-image" onclick="openModal('images/Module2_A2/29.png')">
+                        <img src="images/Module2_A2/30.png" alt="Module 2 Image 30" class="carousel-image" onclick="openModal('images/Module2_A2/30.png')">
+                        <img src="images/Module2_A2/31.png" alt="Module 2 Image 31" class="carousel-image" onclick="openModal('images/Module2_A2/31.png')">
+                        <img src="images/Module2_A2/32.png" alt="Module 2 Image 32" class="carousel-image" onclick="openModal('images/Module2_A2/32.png')">
+                        <img src="images/Module2_A2/33.png" alt="Module 2 Image 33" class="carousel-image" onclick="openModal('images/Module2_A2/33.png')">
+                    </div>
+                </div>
+                <button class="carousel-btn prev-btn" onclick="moveCarouselModule2(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="moveCarouselModule2(1)">&#10095;</button>
+                <div class="carousel-indicators" id="module2-indicators">
+                    <span class="indicator active" onclick="currentSlideModule2(1)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(2)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(3)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(4)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(5)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(6)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(7)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(8)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(9)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(10)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(11)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(12)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(13)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(14)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(15)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(16)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(17)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(18)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(19)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(20)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(21)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(22)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(23)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(24)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(25)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(26)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(27)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(28)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(29)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(30)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(31)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(32)"></span>
+                    <span class="indicator" onclick="currentSlideModule2(33)"></span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="module3" class="module-section">
@@ -550,7 +662,7 @@
     <script>
         // Existing script code continues here...
         
-        // Carousel functionality
+        // Carousel functionality for Module 1
         let currentSlideIndex = 0;
         const totalSlides = 6;
         const carouselTrack = document.querySelector('.carousel-track');
@@ -580,6 +692,43 @@
             const indicators = document.querySelectorAll('.indicator');
             indicators.forEach((indicator, index) => {
                 if (index === currentSlideIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Carousel functionality for Module 2
+        let currentSlideIndexModule2 = 0;
+        const totalSlidesModule2 = 33; // Total images in Module2_A2
+        const carouselTrackModule2 = document.getElementById('module2-track');
+        
+        function moveCarouselModule2(direction) {
+            currentSlideIndexModule2 += direction;
+            
+            if (currentSlideIndexModule2 >= totalSlidesModule2) {
+                currentSlideIndexModule2 = 0;
+            } else if (currentSlideIndexModule2 < 0) {
+                currentSlideIndexModule2 = totalSlidesModule2 - 1;
+            }
+            
+            updateCarouselModule2();
+        }
+        
+        function currentSlideModule2(index) {
+            currentSlideIndexModule2 = index - 1;
+            updateCarouselModule2();
+        }
+        
+        function updateCarouselModule2() {
+            const translateXValue = -currentSlideIndexModule2 * (100 / totalSlidesModule2);
+            carouselTrackModule2.style.transform = `translateX(${translateXValue}%)`;
+            
+            // Update indicators for Module 2
+            const indicators = document.querySelectorAll('#module2-indicators .indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlideIndexModule2) {
                     indicator.classList.add('active');
                 } else {
                     indicator.classList.remove('active');
