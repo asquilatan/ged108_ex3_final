@@ -106,11 +106,34 @@
             margin-bottom: 0.5em;
         }
         
+        .module-header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px 0; /* Added vertical padding since it's moved outside the section */
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.1); /* Removed the inner box shadow */
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 100vw; /* Full viewport width */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+        
+        .module-header h1 {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+        
         .module-header h2 {
             font-family: 'Google Sans', Arial, sans-serif;
             font-size: 1.2em;
             font-weight: 400;
-            margin-bottom: 2em;
+            margin-bottom: 0;
+            text-align: center;
         }
         
         .content-container {
@@ -258,12 +281,20 @@
             width: 4000%; /* 40 images = 40 * 100% */
         }
         
+        #module3-track {
+            width: 600%; /* 6 images = 6 * 100% */
+        }
+        
         #module2-carousel .carousel-image {
             width: calc(100% / 33); /* Each image takes 1/33 of the container */
         }
         
         #module2-ex2-carousel .carousel-image {
             width: calc(100% / 40); /* Each image takes 1/40 of the container */
+        }
+        
+        #module3-carousel .carousel-image {
+            width: calc(100% / 6); /* Each image takes 1/6 of the container */
         }
         
         .carousel-btn {
@@ -399,6 +430,40 @@
             height: 100%;
             border: none;
         }
+        
+        .project-header {
+            display: inline-block;
+            width: 100%;
+            padding: 20px 40px;
+            border-radius: 28px;
+            box-shadow: 
+                inset 0 0 15px rgba(255, 255, 255, 0.2),
+                0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 100px 0 20px 0;
+        }
+        
+        .project-header h2 {
+            text-align: left;
+            font-style: italic;
+            margin: 0 0 10px 0;
+        }
+        
+        .project-header h3 {
+            text-align: left;
+            font-weight: normal;
+            font-size: large;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .project-header p {
+            text-align: left !important;
+            font-size: 0.8em;
+            line-height: 2;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -421,12 +486,18 @@
         </div>
     </section>
 
+    
     <section id="module1" class="module-section">
         <div class="module-content">
             <div class="module-header">
                 <h1>Module 1</h1>
                 <h2>In this module, we explore the importance of arts and humanities in education, society, and the economy through an insight paper, a photo essay, and a visual analysis.</h2>
             </div>
+            <div class="project-header">
+                <h2>Insight Paper</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+            
             <div class="docx-body">
                 <h3>State of the Arts: An Insight Paper on Why the Arts Should Matter</h3>
                 <div class="doc-content">
@@ -452,6 +523,12 @@
                     <p>Dalisay's (2018) Why the arts should matter emphasizes three major arguments for the importance of the arts and humanities, and this insight paper tackles each of them. First, the arts and humanities are needed for a well-rounded individual because they broaden perspectives and enrich areas of thought beyond logic and reason. Furthermore, they are necessary for a society to govern itself wisely, since they promote cultural unity, critical reflection, and imaginative thinking about national identity. Finally, they are good for a country's economic and material well-being, as shown by their significant contributions to GDP and industries such as music and entertainment. However, these arguments are not absolute. The arts may not be the only way to cultivate balance in individuals, unity in society, or growth in the economy. What they do provide, however, is a unique and irreplaceable dimension to human progress, one that science, politics, or economics alone cannot fulfill.</p>
                 </div>
             </div>
+
+            <div class="project-header">
+                <h2>Photo Essay</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
             <div class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-track">
@@ -475,15 +552,18 @@
                 </div>
             </div>
             
+
+            <div class="project-header">
+                <h2>Visual Analysis</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
             <!-- Module 1 Exercise 1 Image -->
             <div class="module1-ex1-image">
-                <img src="images/Module1_Ex1/1.png" alt="Module 1 Exercise 1 Image" style="width: 100%; margin: 2em auto; display: block; border-radius: 10px; object-fit: contain;">
+                <img src="images/Module1_Ex1/1.png" alt="Module 1 Exercise 1 Image" style="width: 100%; margin: 0 auto 2em auto; display: block; border-radius: 10px; object-fit: contain;">
             </div>
         </div>
     </section>
-
-
-    
 
     <section id="module2" class="module-section">
         <div class="module-content">
@@ -492,6 +572,11 @@
                 <h2>In this module, we delve into various art forms and techniques, exploring their cultural significance and contemporary applications through visual presentations and analyses.</h2>
             </div>
             
+            <div class="project-header">
+                <h2>Virtual Museum Visit</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
             <div class="content-container">
                 <div class="embed-container">
                     <iframe src="https://drive.google.com/file/d/1NLRBjDGyOGb0PpAz6QkRn834MZQ3JO_S/preview" allow="autoplay"></iframe>
@@ -575,10 +660,20 @@
                 </div>
             </div>
             
+            <div class="project-header">
+                <h2>Integration of Global Culture</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
             <div id="q2" style="margin: 2em 0; text-align: center;">
                 <img src="images/Module2_Q2/Q2 - GED108.png" alt="Module 2 Question 2" style="max-width: 100%; height: auto; border-radius: 10px;">
             </div>
             
+            <div class="project-header">
+                <h2>Creative presentation</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
             <div class="content-container">
                 <div class="embed-container">
                     <iframe src="https://drive.google.com/file/d/1cXzKNHATq0NgnIrKxUnYaGHa7oPjgv9X/preview" allow="autoplay"></iframe>
@@ -680,9 +775,76 @@
     </section>
 
     <section id="module3" class="module-section">
+        <div class="module-content">
+            <div class="module-header">
+                <h1>Module 3</h1>
+                <h2>REPLACE_THIS</h2>
+            </div>
+
+            <div class="project-header">
+                <h2>Photo appropriation</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
+            <div class="content-container">
+                <div class="embed-container">
+                    <iframe src="https://drive.google.com/file/d/1JuqPLUax7F8e3gNE5CNWYPwbjA04aKeo/preview" width="640" height="480" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="carousel-container" id="module3-carousel">
+                <div class="carousel">
+                    <div class="carousel-track" id="module3-track">
+                        <img src="images/Module3_A3/Powerpoints/1.png" alt="Module 3 Powerpoint Image 1" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/1.png')">
+                        <img src="images/Module3_A3/Powerpoints/2.png" alt="Module 3 Powerpoint Image 2" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/2.png')">
+                        <img src="images/Module3_A3/Powerpoints/3.png" alt="Module 3 Powerpoint Image 3" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/3.png')">
+                        <img src="images/Module3_A3/Powerpoints/4.png" alt="Module 3 Powerpoint Image 4" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/4.png')">
+                        <img src="images/Module3_A3/Powerpoints/5.png" alt="Module 3 Powerpoint Image 5" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/5.png')">
+                        <img src="images/Module3_A3/Powerpoints/6.png" alt="Module 3 Powerpoint Image 6" class="carousel-image" onclick="openModal('images/Module3_A3/Powerpoints/6.png')">
+                    </div>
+                </div>
+                <button class="carousel-btn prev-btn" onclick="moveCarouselModule3(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="moveCarouselModule3(1)">&#10095;</button>
+                <div class="carousel-indicators" id="module3-indicators">
+                    <span class="indicator active" onclick="currentSlideModule3(1)"></span>
+                    <span class="indicator" onclick="currentSlideModule3(2)"></span>
+                    <span class="indicator" onclick="currentSlideModule3(3)"></span>
+                    <span class="indicator" onclick="currentSlideModule3(4)"></span>
+                    <span class="indicator" onclick="currentSlideModule3(5)"></span>
+                    <span class="indicator" onclick="currentSlideModule3(6)"></span>
+                </div>
+            </div>
+
+            <div style="margin: 2em 0; text-align: center;">
+                <img src="images/Module3_A3/M2_TheFall.png" alt="Module 3 Image" style="max-width: 100%; height: auto; border-radius: 10px;">
+            </div>
+
+            <div class="project-header">
+                <h2>Art Talk</h2>
+                <h3>REPLACE_THIS</h3>
+            </div>
+
+            <div class="content-container">
+                <div class="embed-container">
+                    <iframe src="https://drive.google.com/file/d/1ycfZX4IYxaKq9shmLNusL1u3B-QWhgBU/preview" width="640" height="480" allow="autoplay"></iframe>
+                </div>
+            </div>
+
+        </div>
+        
     </section>
 
     <section id="reflection" class="module-section">
+        <div class="module-content">
+            <div class="module-header">
+                <h1>Reflection</h1>
+                <h2>My Learning Journey in GED108</h2>
+            </div>
+            <div class="project-header">
+                <h2>Key Takeaways</h2>
+                <p>This course has provided me with an in-depth understanding of the importance of arts and humanities in education, society, and the economy. Throughout this journey, I have explored various art forms and techniques, delving into their cultural significance and contemporary applications. The integration of theoretical knowledge with practical exercises has allowed me to appreciate the interconnections between different artistic disciplines and their relevance in our daily lives. From analyzing classical works to creating my own artistic expressions, each module has contributed to a more nuanced worldview and a deeper appreciation for cultural diversity. The interdisciplinary approach of this course has shown me how arts and humanities serve as bridges connecting different fields of knowledge, fostering critical thinking and creative problem-solving skills.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Modal Structure -->
@@ -934,6 +1096,43 @@
             const indicators = document.querySelectorAll('#module2-ex2-indicators .indicator');
             indicators.forEach((indicator, index) => {
                 if (index === currentSlideIndexModule2Ex2) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Carousel functionality for Module 3
+        let currentSlideIndexModule3 = 0;
+        const totalSlidesModule3 = 6; // Total images in Module3_A3/Powerpoints
+        const carouselTrackModule3 = document.getElementById('module3-track');
+        
+        function moveCarouselModule3(direction) {
+            currentSlideIndexModule3 += direction;
+            
+            if (currentSlideIndexModule3 >= totalSlidesModule3) {
+                currentSlideIndexModule3 = 0;
+            } else if (currentSlideIndexModule3 < 0) {
+                currentSlideIndexModule3 = totalSlidesModule3 - 1;
+            }
+            
+            updateCarouselModule3();
+        }
+        
+        function currentSlideModule3(index) {
+            currentSlideIndexModule3 = index - 1;
+            updateCarouselModule3();
+        }
+        
+        function updateCarouselModule3() {
+            const translateXValue = -currentSlideIndexModule3 * (100 / totalSlidesModule3);
+            carouselTrackModule3.style.transform = `translateX(${translateXValue}%)`;
+            
+            // Update indicators for Module 3
+            const indicators = document.querySelectorAll('#module3-indicators .indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlideIndexModule3) {
                     indicator.classList.add('active');
                 } else {
                     indicator.classList.remove('active');
